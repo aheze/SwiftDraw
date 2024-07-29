@@ -178,6 +178,8 @@ extension XMLParser {
                 return .point
             } else if scanUnit(.pica) {
                 return .pica
+            } else if scanUnit(.ex) {
+                return .ex
             } else {
                 return nil
             }

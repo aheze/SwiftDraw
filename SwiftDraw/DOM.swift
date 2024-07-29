@@ -112,6 +112,7 @@ extension DOM {
         case millimeter
         case point
         case pica
+        case ex
     }
 
     enum Error: Swift.Error {
@@ -134,6 +135,8 @@ extension DOM.Unit {
             return "pt"
         case .pica:
             return "pc"
+        case .ex:
+            return "ex"
         }
     }
 }
@@ -153,6 +156,11 @@ extension Double {
             return self * 1.3333
         case .pica:
             return self * 16
+        case .ex:
+            return self * 17 // hardcoded
+            // actual value (from https://oreillymedia.github.io/Using_SVG/guide/units.html) should be:
+            //      Equivalent to the height of a lower-case letter in the font (and font-size) in effect for an element.
+            //      If the font doesn’t include lower-case letters, or doesn’t include the metadata about the ex-height, then 1ex = 0.5em.
         }
     }
 }
